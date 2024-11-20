@@ -236,9 +236,10 @@
       <!-- Section Title -->
       {% if service %}
       <div class="container section-title" data-aos="fade-up">
-        <h2>{{ service.title}}</h2>
-        <p>{{service.desc}}</p>
+        <h2>{{ service.title }}</h2>
+        <p>{{ service.desc }}</p>
       </div>
+
       {% endif %}
       <!-- End Section Title -->
 
@@ -246,53 +247,17 @@
 
         <div class="row g-5">
 
+          {% for part in parts %}
+
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item item-cyan position-relative">
               <i class="bi bi-activity icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Nesciunt Mete</a></h3>
-              <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p>
+              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">{{ part.part_title }}</a></h3>
+              <p>{{ part.part_desc }}</p>
             </div>
-          </div><!-- End Service Item -->
+          </div>
+          {% endfor %}
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item item-orange position-relative">
-              <i class="bi bi-broadcast icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Eosle Commodi</a></h3>
-              <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item item-teal position-relative">
-              <i class="bi bi-easel icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Ledo Markt</a></h3>
-              <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item item-red position-relative">
-              <i class="bi bi-bounding-box-circles icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Asperiores Commodi</a></h3>
-              <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item item-indigo position-relative">
-              <i class="bi bi-calendar4-week icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Velit Doloremque.</a></h3>
-              <p>Cumque et suscipit saepe. Est maiores autem enim facilis ut aut ipsam corporis aut. Sed animi at autem alias eius labore.</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item item-pink position-relative">
-              <i class="bi bi-chat-square-text icon"></i>
-              <h3><a href="{% url 'employ:service' %}" class="read-more stretched-link">Dolori Architecto</a></h3>
-              <p>Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non et debitis iure. Corrupti recusandae ducimus enim.</p>
-            </div>
-          </div><!-- End Service Item -->
 
         </div>
 
@@ -305,16 +270,19 @@
 
       <div class="container">
 
+        {% if action %}
+
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-xl-9 text-center text-xl-start">
-            <h3>Call To Action</h3>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3>{{ action.action_head }}</h3>
+            <p>{{ action.action_desc }}</p>
           </div>
           <div class="col-xl-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
+            <a class="cta-btn align-middle" href="#">{{ action.action_btn }}</a>
           </div>
         </div>
 
+        {% endif %}
       </div>
 
     </section><!-- /Call To Action Section -->
@@ -323,10 +291,14 @@
     <section id="portfolio" class="portfolio section">
 
       <!-- Section Title -->
+      {% if title %}
       <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+        <h2>{{ title.title_head }}</h2>
+        <p>{{ title.title_desc }}</p>
+      </div>
+
+      {% endif %}
+      <!-- End Section Title -->
 
       <div class="container">
 
@@ -334,133 +306,27 @@
 
           <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-product">Product</li>
-            <li data-filter=".filter-branding">Branding</li>
-            <li data-filter=".filter-books">Books</li>
+            <li data-filter=".filter-app">Business Insights</li>
+            <li data-filter=".filter-product">Machine Learning Models</li>
+            <li data-filter=".filter-branding">Visualization Projects</li>
+            <li data-filter=".filter-books">Forecasting & Predictions</li>
           </ul><!-- End Portfolio Filters -->
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
+            {% for item in portfolio %}
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/app-1.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/app-1.jpg' %}" class="img-fluid" alt=""></a>
+                <a href="{{ item.image.url }}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{{ item.image.url }}" class="img-fluid" alt=""></a>
                 <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">App 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
+                  <h4><a href="{% url 'employ:portfolio' item.id %}" title="More Details">{{ item.title }}</a></h4>
+                  <p>{{ item.description }}</p>
                 </div>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
+            {% endfor %}
+            <!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/product-1.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/product-1.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Product 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/branding-1.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/branding-1.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Branding 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/books-1.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/books-1.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Books 1</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/app-2.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/app-2.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">App 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/product-2.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/product-2.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Product 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/branding-2.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/branding-2.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Branding 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/books-2.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/books-2.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Books 2</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/app-3.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/app-3.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">App 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/product-3.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/product-3.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Product 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/branding-3.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/branding-3.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Branding 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-books">
-              <div class="portfolio-content h-100">
-                <a href="{% static 'img/portfolio/books-3.jpg' %}" data-gallery="portfolio-gallery-app" class="glightbox"><img src="{% static 'img/portfolio/books-3.jpg' %}" class="img-fluid" alt=""></a>
-                <div class="portfolio-info">
-                  <h4><a href="{% url 'employ:portfolio' %}" title="More Details">Books 3</a></h4>
-                  <p>Lorem ipsum, dolor sit amet consectetur</p>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
 
           </div><!-- End Portfolio Container -->
 
@@ -474,71 +340,49 @@
     <section id="team" class="team section light-background">
 
       <!-- Section Title -->
+      {% if team %}
+
       <div class="container section-title" data-aos="fade-up">
-        <h2>Team</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+        <h2>Our Team</h2>
+        <p>Our data experts, analysts, and developers combine their knowledge to deliver results-driven solutions in data analysis.</p>
+      </div>
+
+      {% endif %}
+      <!-- End Section Title -->
 
       <div class="container">
 
         <div class="row">
 
+          {% for member in staff %}
           <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <img src="{% static 'img/team/team-1.jpg' %}" class="img-fluid" alt="">
+              <img src="{{ member.image.url }}" class="img-fluid" alt="">
               <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
+                <h4>{{ member.name }}</h4>
+                <span>{{ member.role }}</span>
                 <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                  {{ member.description }}
                 </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+                 {% if member.twitter_link %}
+                <a href="{{ member.twitter_link }}"><i class="bi bi-twitter-x"></i></a>
+              {% endif %}
+              {% if member.facebook_link %}
+                <a href="{{ member.facebook_link }}"><i class="bi bi-facebook"></i></a>
+              {% endif %}
+              {% if member.instagram_link %}
+                <a href="{{ member.instagram_link }}"><i class="bi bi-instagram"></i></a>
+              {% endif %}
+              {% if member.linkedin_link %}
+                <a href="{{ member.linkedin_link }}"><i class="bi bi-linkedin"></i></a>
+              {% endif %}
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div>
+          {% endfor %}
+          <!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="member">
-              <img src="{% static 'img/team/team-2.jpg' %}" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
-                <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <img src="{% static 'img/team/team-3.jpg' %}" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
-                <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Team Member -->
 
         </div>
 
@@ -550,10 +394,13 @@
     <section id="contact" class="contact section">
 
       <!-- Section Title -->
+      {% if contact %}
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+        <h2>{{ contact.contact_title}}</h2>
+        <p>{{ contact.contact_title}}</p>
+      </div>
+      {% endif %}
+      <!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
